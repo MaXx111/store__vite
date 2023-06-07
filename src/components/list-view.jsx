@@ -1,17 +1,14 @@
 import ListItem from './list-item'
+import { v4 } from 'uuid'
 
 function ListView({products}) {
-    const res = products.map(function(item) {
-        return (
-            <>
-                <ListItem data={item} />
-            </>
-        )
-    })
-
+    
     return (
         <>
-            {res}
+            {products.map(item => {
+                let id = v4();
+                return <ListItem key={id} data={item} />
+            })}
         </>
     )
 }

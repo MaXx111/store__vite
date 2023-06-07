@@ -1,18 +1,14 @@
 import CardItem from './card-item'
+import { v4 } from 'uuid'
 
 function CardsView({products}) {
 
-    const res = products.map(function(item) {
-        return (
-            <>
-                <CardItem data={item} />
-            </>
-        )
-    })
-
     return (
         <>
-            {res}
+            {products.map(item => {
+                let id = v4();
+                return <CardItem key={id} data={item} />
+            })}
         </>
     )
 }
